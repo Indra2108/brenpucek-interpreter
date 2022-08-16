@@ -1,6 +1,6 @@
 # brenpucek-interpreter
 
-A Yet Another unfinished written from scratch Brainf*ck Interpreter in Typescript
+A Yet Another 'unfinished' Brainf*ck Interpreter in Typescript
 
 ## Todo
 - [x] `+`
