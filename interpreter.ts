@@ -4,6 +4,7 @@ function interpreter(code: string) {
     let currentCell: number = 0
     let resultNumber: number[] = []
     let resultAscii: string[] = []
+    let loopMode: boolean = false
     const ascii: string[] = [
         'NUL', 'SOH', 'STX', 'ETX', 'EOT', 'ENQ', 'ACK', 'BEL', 'BS', 'TAB', 'LF', 'VT', 'FF', 'CR',
         'SO', 'SI', 'DLE', 'DC1', 'DC2', 'DC3', 'DC4', 'NAK', 'SYN', 'ETB', 'CAN', 'EM', 'SUB', 'ESC',
@@ -22,6 +23,11 @@ function interpreter(code: string) {
                 ASCII: resultAscii
             }
         } else {
+            function loop(): void {
+                while (loopMode) {
+                    
+                }
+            }
             switch (arrayScript[index]) {
                 case '+':
                     if (currentValue == 255) {
@@ -60,9 +66,9 @@ function interpreter(code: string) {
                     break;
                 case '[':
                     if (currentValue == 0) {
-
+                        
                     } else {
-
+                        loop()
                     }
                     break;
                 case ']':
@@ -75,22 +81,4 @@ function interpreter(code: string) {
     }
 }
 
-console.log(interpreter(`
-    ++++++++++ ++++++++++ ++++++++++ ++++++++++ ++++++++++
-    ++++++++++ ++++++++++ ++ .          72  Print 'H'
-    ++++++++ ++++++++++ ++++++++++ + .  101 Print 'e'
-    +++++++ . .                         108 Print 'l l'
-    +++ .                               111 Print 'o'
-    ---------- ---------- ---------- ---------- ----------
-    ---------- ---------- ----------
-    + .                                 31  Print 'SPACE'
-    ++++++++++ ++++++++++ ++++++++++ ++++++++++ ++++++++++
-    +++++ .                             87  Print 'W'
-    ++++++++++ ++++++++++ ++++ .        111 Print 'o'
-    +++ .                               114 Print 'r'
-    ------ .                            108 Print 'l'
-    -------- .                          100 Print 'd'
-    ---------- ---------- ---------- ---------- ---------- 
-    ---------- ------- .                33  Print '!'
-    `
-))
+export default interpreter
